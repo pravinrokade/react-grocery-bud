@@ -1,23 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
+import Grocery from './Components/Grocery';
+import { useState } from "react";
 
 function App() {
+  const [groceryList, setGroceryList] = useState([{name:'Rice', completed:false},{name:'Pulses', completed:false}]);
+  localStorage.setItem('groceryList',JSON.stringify(groceryList));
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Grocery groceryList={groceryList} setGroceryList={setGroceryList}/>
     </div>
   );
 }
